@@ -1,0 +1,23 @@
+@apiUrl = http://localhost:5000/api
+@flightServiceUrl = http://localhost:5005
+
+GET {{apiUrl}}/Home
+
+GET {{flightServiceUrl}}
+
+POST {{apiUrl}}/Flights
+content-type: application/json
+
+{
+	"planeId": "81053718-af52-4f50-9a53-0e4a51525c3a",
+	"availableSeats": {
+			"economic": 10,
+			"business": 15
+		},
+	"startAirport": "5ba47457-437e-4efc-b724-a49b3d1aac89",
+	"endAirport": "d99d11aa-fbc9-418b-b355-c4e416223f47",
+	"flightType": "OneWay",
+	"price": "250.00",
+	"flightDate": "9/21/2019 8:36:07 PM",
+	"returnDate": "9/21/2019 8:36:07 PM"
+}
