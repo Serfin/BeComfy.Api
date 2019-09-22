@@ -1,9 +1,9 @@
 @apiUrl = http://localhost:5000/api
-@flightServiceUrl = http://localhost:5005
+@flightServiceUrl = http://localhost:5005/api
 
 GET {{apiUrl}}/Home
 
-GET {{flightServiceUrl}}
+GET {{flightServiceUrl}}/Home
 
 POST {{apiUrl}}/Flights
 content-type: application/json
