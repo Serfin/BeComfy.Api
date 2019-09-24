@@ -2,7 +2,7 @@
 using System.Reflection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using BeComfy.Common.CqrsFlow.Dispatcher;
+using BeComfy.Common.CqrsFlow;
 using BeComfy.Common.RabbitMq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
