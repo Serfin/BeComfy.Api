@@ -1,12 +1,13 @@
 @apiUrl = http://localhost:5000/api
 @flightServiceUrl = http://localhost:5005/api
+@flightId = "58B7F8DE-3F8E-44C0-A79F-F39AC022205E"
 
 GET {{apiUrl}}/Home
 
 GET {{flightServiceUrl}}/Home
 
 POST {{apiUrl}}/Flights
-content-type: application/json
+Content-Type: application/json
 
 {
 	"planeId": "81053718-af52-4f50-9a53-0e4a51525c3a",
@@ -19,5 +20,12 @@ content-type: application/json
 	"flightType": "OneWay",
 	"price": "250.00",
 	"flightDate": "9/21/2019 8:36:07 PM",
-	"returnDate": "9/21/2019 8:36:07 PM"
+	"returnDate": "11/21/2019 12:00:00 PM"
+}
+
+DELETE {{apiUrl}}/Flights
+Content-Type: application/json
+
+{
+	"id": {{flightId}}
 }

@@ -5,14 +5,14 @@ using Newtonsoft.Json;
 namespace BeComfy.Api.Messages.Commands.Flights
 {
     [MessageNamespace("flights")]
-    public class DeleteFlight
+    public class DeleteFlight : ICommand
     {
-        public Guid FlightId { get; set; }
+        public Guid Id { get; set; }
 
         [JsonConstructor]
-        public DeleteFlight(Guid flightId)
+        public DeleteFlight(Guid id)
         {
-            FlightId = flightId;
+            Id = id;
         }
     }
 }

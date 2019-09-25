@@ -19,9 +19,7 @@ namespace BeComfy.Api.Controllers
                 resourceId: command.Id, resource: "flights");
 
         [HttpDelete]
-        public IActionResult Delete(DeleteFlight command)
-        {
-            return Ok();
-        }
+        public async Task<IActionResult> Delete(DeleteFlight command)
+            => await SendAsync<DeleteFlight>(new DeleteFlight(command.Id));
     }
 }
