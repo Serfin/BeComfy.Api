@@ -14,7 +14,6 @@ GET {{identityServiceUrl}}/Home
 ### IDENTITY SERVICE ###
 
 GET {{identityServiceUrl}}/Me
-Authorization: : Bearer {{jwtToken}}
 GET {{identityServiceUrl}}/me
 Authorization: Bearer {{jwtToken}}
 
