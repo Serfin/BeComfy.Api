@@ -2,6 +2,7 @@
 using System.Reflection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using BeComfy.Common.Authentication;
 using BeComfy.Common.CqrsFlow;
 using BeComfy.Common.RabbitMq;
 using Microsoft.AspNetCore.Builder;
@@ -26,6 +27,8 @@ namespace BeComfy.Api
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddJwt();
+            services.AddAuthorization(x => x.AddPolicy("admin", p => p.RequireRole("admin")));
         
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
@@ -54,6 +57,8 @@ namespace BeComfy.Api
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseAuthentication();
+            app.UseAccessTokenValidator();
         }
     }
 }
