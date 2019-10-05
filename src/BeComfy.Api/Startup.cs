@@ -58,7 +58,6 @@ namespace BeComfy.Api
             app.UseHttpsRedirection();
             app.UseMvc();
             app.UseAuthentication();
-            app.UseAccessTokenValidator();
         }
     }
 }
