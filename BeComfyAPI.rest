@@ -1,10 +1,9 @@
 @apiUrl = http://localhost:5000/api
 @flightServiceUrl = http://localhost:5005/api
 @identityServiceUrl = http://localhost:5010
-@flightId = "58B7F8DE-3F8E-44C0-A79F-F39AC022205E"
-@jwtToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzMTVmYTBhYmZiZTA0YTA3OWE2NjRlZTY4MTAwN2UxMiIsInVuaXF1ZV9uYW1lIjoiMzE1ZmEwYWJmYmUwNGEwNzlhNjY0ZWU2ODEwMDdlMTIiLCJqdGkiOiI1ZTNlMTdlYi01ZTk5LTRhZDktYWE2YS0yYTU5NjY3ZmIwYzgiLCJpYXQiOiIxNTcwMDUyNzE4MzAxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVVNFUiAgICAgICIsIm5iZiI6MTU3MDA1MjcxOCwiZXhwIjoxNTcwMDU0NTE4LCJpc3MiOiJiZWNvbWZ5LWlkZW50aXR5LXNlcnZpY2UifQ.NtNgNErghkdSwib9Hh2vSjn63N7LFz0Ov-meOZ8etGc"
+@flightId = 58B7F8DE-3F8E-44C0-A79F-F39AC022205E
+@jwtToken = 
 
-### HEALTH CHECK ###
 GET {{apiUrl}}/Home
 
 GET {{flightServiceUrl}}/Home
@@ -13,14 +12,14 @@ GET {{identityServiceUrl}}/Home
 
 ### IDENTITY SERVICE ###
 
-GET {{identityServiceUrl}}/me
+GET {{identityServiceUrl}}/Me
 Authorization: Bearer {{jwtToken}}
 
 POST {{identityServiceUrl}}/sign-up
 Content-Type: application/json
 
 {
-	"email": "test@test.com",
+	"email": "test1@test.com",
 	"password": "123qwe"
 }
 
@@ -28,11 +27,14 @@ POST {{identityServiceUrl}}/sign-in
 Content-Type: application/json
 
 {
-	"email": "test@test.com",
+	"email": "test1@test.com",
 	"password": "123qwe"
 }
 
 ### FLIGHTS SERVICE ###
+
+GET http://localhost:5005/Flights/?{{flightId}}
+Content-Type: application/json
 
 POST {{apiUrl}}/Flights
 Content-Type: application/json

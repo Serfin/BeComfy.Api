@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using BeComfy.Common.Messages;
+using BeComfy.Common.CqrsFlow;
 using BeComfy.Common.RabbitMq;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using BeComfy.Common.Messages;
+using BeComfy.Common.CqrsFlow;
 using BeComfy.Common.Types.Enums;
 using Newtonsoft.Json;
 
@@ -13,6 +14,7 @@ namespace BeComfy.Api.Messages.Commands.Flights
         public Guid PlaneId { get; set; }
         public IDictionary<SeatClass, int> AvailableSeats { get; set; }
         public Guid StartAirport { get; set; }
+        public IEnumerable<Guid> TransferAirports { get; set; }
         public Guid EndAirport { get; set; }
         public FlightType FlightType { get; set; }
         public decimal Price { get; set; }
@@ -20,8 +22,9 @@ namespace BeComfy.Api.Messages.Commands.Flights
         public DateTime? ReturnDate { get; set; }
 
         [JsonConstructor]
-        public CreateFlight(Guid id, Guid planeId, IDictionary<SeatClass, int> availableSeats, Guid startAirport,
-            Guid endAirport, FlightType flightType, decimal price, DateTime flightDate, DateTime? returnDate)
+        public CreateFlight(Guid id, Guid planeId, IDictionary<SeatClass, int> availableSeats, 
+            Guid startAirport, IEnumerable<Guid> rransferAirports, Guid endAirport, 
+            FlightType flightType, decimal price, DateTime flightDate, DateTime? returnDate)
         {
             Id = id;
             PlaneId = planeId;

@@ -1,4 +1,5 @@
 using System;
+using BeComfy.Common.CqrsFlow;
 using BeComfy.Common.Messages;
 using Newtonsoft.Json;
 
