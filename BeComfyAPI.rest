@@ -1,7 +1,7 @@
 @apiUrl = http://localhost:5000/api
 @flightServiceUrl = http://localhost:5005/api
 @identityServiceUrl = http://localhost:5010
-@flightId = 58B7F8DE-3F8E-44C0-A79F-F39AC022205E
+@flightId = d874804b-5047-4caa-97b7-f82d32e1ea7b
 @jwtToken = 
 
 GET {{apiUrl}}/Home
@@ -33,7 +33,7 @@ Content-Type: application/json
 
 ### FLIGHTS SERVICE ###
 
-GET http://localhost:5005/Flights/?{{flightId}}
+GET http://localhost:5005/Flights/{{flightId}}
 Content-Type: application/json
 
 POST {{apiUrl}}/Flights
@@ -42,10 +42,14 @@ Content-Type: application/json
 {
 	"planeId": "81053718-af52-4f50-9a53-0e4a51525c3a",
 	"availableSeats": {
-			"economic": 10,
+			"economic": 9,
 			"business": 15
 		},
 	"startAirport": "5ba47457-437e-4efc-b724-a49b3d1aac89",
+	"transferAirports": [
+		"81053718-af52-4f50-9a53-0e4a51525c3a",
+		"43254543-af52-4f50-9a53-0e4a51525c3a"
+	],
 	"endAirport": "d99d11aa-fbc9-418b-b355-c4e416223f47",
 	"flightType": "OneWay",
 	"price": "250.00",
