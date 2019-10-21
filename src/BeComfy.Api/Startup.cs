@@ -2,9 +2,11 @@
 using System.Reflection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using BeComfy.Api.Services;
 using BeComfy.Common.Authentication;
 using BeComfy.Common.CqrsFlow;
 using BeComfy.Common.RabbitMq;
+using BeComfy.Common.RestEase;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -29,7 +31,10 @@ namespace BeComfy.Api
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddJwt();
             services.AddAuthorization(x => x.AddPolicy("admin", p => p.RequireRole("admin")));
-        
+            
+            // Hardcoded addresses for now
+            services.RegisterRestClientFor<IFlightsService>("http://localhost:5005");
+
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
                     .AsImplementedInterfaces();
