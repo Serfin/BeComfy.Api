@@ -23,13 +23,14 @@ namespace BeComfy.Api.Messages.Commands.Flights
 
         [JsonConstructor]
         public CreateFlight(Guid id, Guid planeId, IDictionary<SeatClass, int> availableSeats, 
-            Guid startAirport, IEnumerable<Guid> rransferAirports, Guid endAirport, 
+            Guid startAirport, IEnumerable<Guid> transferAirports, Guid endAirport, 
             FlightType flightType, decimal price, DateTime flightDate, DateTime? returnDate)
         {
             Id = id;
             PlaneId = planeId;
             AvailableSeats = availableSeats;
             StartAirport = startAirport;
+            TransferAirports = transferAirports;
             EndAirport = endAirport;
             FlightType = flightType;
             Price = price;
