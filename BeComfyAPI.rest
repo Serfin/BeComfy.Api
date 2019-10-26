@@ -1,20 +1,21 @@
-@apiUrl = http://localhost:5000/api
-@flightServiceUrl = http://localhost:5005/api
+@apiUrl = http://localhost:5000
+@flightServiceUrl = http://localhost:5005
 @identityServiceUrl = http://localhost:5010
-@flightId = d874804b-5047-4caa-97b7-f82d32e1ea7b
+@flightId = 21a6ff51-2d9a-44a2-8d26-c6220cf59780
 @jwtToken = 
 
-GET {{apiUrl}}/Home
-
-GET {{flightServiceUrl}}/Home
-
+###
+GET {{apiUrl}}/api/Home
+###
+GET {{flightServiceUrl}}/api/Home
+###
 GET {{identityServiceUrl}}/Home
 
 ### IDENTITY SERVICE ###
-
 GET {{identityServiceUrl}}/Me
 Authorization: Bearer {{jwtToken}}
 
+### SIGN UP ###
 POST {{identityServiceUrl}}/sign-up
 Content-Type: application/json
 
@@ -23,6 +24,7 @@ Content-Type: application/json
 	"password": "123qwe"
 }
 
+### SIGN IN ###
 POST {{identityServiceUrl}}/sign-in
 Content-Type: application/json
 
@@ -32,9 +34,11 @@ Content-Type: application/json
 }
 
 ### FLIGHTS SERVICE ###
-
-GET http://localhost:5005/Flights/{{flightId}}
+### GET FLIGHT ###
+GET {{apiUrl}}/flights/{{flightId}}
 Content-Type: application/json
+
+### CREATE FLIGHT ###
 
 POST {{apiUrl}}/Flights
 Content-Type: application/json
@@ -48,14 +52,16 @@ Content-Type: application/json
 	"startAirport": "5ba47457-437e-4efc-b724-a49b3d1aac89",
 	"transferAirports": [
 		"81053718-af52-4f50-9a53-0e4a51525c3a",
-		"43254543-af52-4f50-9a53-0e4a51525c3a"
+		"5ba47457-437e-4efc-b724-a49b3d1aac89"
 	],
 	"endAirport": "d99d11aa-fbc9-418b-b355-c4e416223f47",
-	"flightType": "OneWay",
-	"price": "250.00",
+	"flightType": "RoundTrip",
+	"price": "350.00",
 	"flightDate": "9/21/2019 8:36:07 PM",
 	"returnDate": "11/21/2019 12:00:00 PM"
 }
+
+### DELETE FLIGHT
 
 DELETE {{apiUrl}}/Flights
 Content-Type: application/json
