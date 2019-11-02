@@ -1,10 +1,10 @@
 @apiUrl = http://localhost:5000
 @flightServiceUrl = http://localhost:5005
 @identityServiceUrl = http://localhost:5010
-@flightId = 21a6ff51-2d9a-44a2-8d26-c6220cf59780
+@flightId = F935D326-71FA-484A-A155-B8EA8A277DA4
 @jwtToken = 
 
-###
+### API GATEWAY HEALTHCHECK
 GET {{apiUrl}}/api/Home
 ###
 GET {{flightServiceUrl}}/api/Home
@@ -35,28 +35,30 @@ Content-Type: application/json
 
 ### FLIGHTS SERVICE ###
 ### GET FLIGHT ###
-GET {{apiUrl}}/flights/{{flightId}}
+GET {{flightServiceUrl}}/flights/{{flightId}}
+Content-Type: application/json
+
+### BROWSE FLIGHTS ###
+GET {{apiUrl}}/flights?page=1&pageSize=3
 Content-Type: application/json
 
 ### CREATE FLIGHT ###
-
 POST {{apiUrl}}/Flights
 Content-Type: application/json
 
 {
 	"planeId": "81053718-af52-4f50-9a53-0e4a51525c3a",
 	"availableSeats": {
-			"economic": 9,
-			"business": 15
+			"economic": 7,
+			"business": 12
 		},
 	"startAirport": "5ba47457-437e-4efc-b724-a49b3d1aac89",
 	"transferAirports": [
-		"81053718-af52-4f50-9a53-0e4a51525c3a",
-		"5ba47457-437e-4efc-b724-a49b3d1aac89"
+		"81053718-af52-4f50-9a53-0e4a51525c3a"
 	],
 	"endAirport": "d99d11aa-fbc9-418b-b355-c4e416223f47",
 	"flightType": "RoundTrip",
-	"price": "350.00",
+	"price": 300.00,
 	"flightDate": "9/21/2019 8:36:07 PM",
 	"returnDate": "11/21/2019 12:00:00 PM"
 }
@@ -67,5 +69,5 @@ DELETE {{apiUrl}}/Flights
 Content-Type: application/json
 
 {
-	"id": {{flightId}}
+	"id": "{{flightId}}"
 }

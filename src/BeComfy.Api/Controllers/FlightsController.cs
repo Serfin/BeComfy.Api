@@ -5,6 +5,7 @@ using BeComfy.Common.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using BeComfy.Api.Services;
 using System;
+using BeComfy.Api.Queries;
 
 namespace BeComfy.Api.Controllers
 {
@@ -31,5 +32,9 @@ namespace BeComfy.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
             => Ok(await _flightsService.GetAsync(id));
+
+        [HttpGet]
+        public async Task<IActionResult> Browse([FromQuery] BrowseFlights query)
+            => Ok(await _flightsService.BrowseAsync(query));
     }
 }
