@@ -13,7 +13,6 @@ namespace BeComfy.Api.Messages.Commands.Airplanes
         public Guid Id { get; }
         public string Model { get; }
         public IDictionary<SeatClass, int> AvailableSeats { get; }
-        public DateTime IntroductionToTheFleet { get; }
 
         [JsonConstructor]
         public CreateAirplane(Guid id, string model, IDictionary<SeatClass, int> availableSeats,
