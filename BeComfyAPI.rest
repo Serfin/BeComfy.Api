@@ -3,9 +3,12 @@
 @identityServiceUrl = http://localhost:5010
 @airplanesServiceUrl = http://localhost:5015
 @flightId = F935D326-71FA-484A-A155-B8EA8A277DA4
+@airplaneId = b46d99e8-840f-4108-87ec-1b272ef0767e
 @jwtToken = 
 
-### API GATEWAY HEALTHCHECK
+#########################################################
+############## API GATEWAY HEALTHCHECK ##################
+#########################################################
 GET {{apiUrl}}/api/Home
 ###
 GET {{flightServiceUrl}}/api/Home
@@ -14,7 +17,10 @@ GET {{identityServiceUrl}}/Home
 ###
 GET {{airplanesServiceUrl}}/api/Home
 
-### IDENTITY SERVICE ###
+#########################################################
+################## IDENTITY SERVICE #####################
+#########################################################
+
 GET {{identityServiceUrl}}/Me
 Authorization: Bearer {{jwtToken}}
 
@@ -36,7 +42,10 @@ Content-Type: application/json
 	"password": "123qwe"
 }
 
-### FLIGHTS SERVICE ###
+#########################################################
+################### FLIGHTS SERVICE #####################
+#########################################################
+
 ### GET FLIGHT ###
 GET {{flightServiceUrl}}/flights/{{flightId}}
 Content-Type: application/json
@@ -50,7 +59,7 @@ POST {{apiUrl}}/Flights
 Content-Type: application/json
 
 {
-	"planeId": "ee37ba24-8fd4-4f31-baa7-4cf9cd824514",
+	"planeId": "{{airplaneId}}",
 	"startAirport": "5ba47457-437e-4efc-b724-a49b3d1aac89",
 	"transferAirports": [
 		"81053718-af52-4f50-9a53-0e4a51525c3a"
@@ -61,7 +70,7 @@ Content-Type: application/json
 	"returnDate": "11/21/2019 12:00:00 PM"
 }
 
-### DELETE FLIGHT
+### DELETE FLIGHT ###
 
 DELETE {{apiUrl}}/Flights
 Content-Type: application/json
@@ -70,7 +79,18 @@ Content-Type: application/json
 	"id": "{{flightId}}"
 }
 
-### AIRPLANES SERVICE ###
+### END FLIGHT ###
+
+POST {{apiUrl}}/Flights
+Content-Type: application/json
+
+{
+	"id": "{{flightId}}",
+}
+
+#########################################################
+################### AIRPLANES SERVICE ###################
+#########################################################
 
 ### CREATE AIRPLANE ###
 POST {{apiUrl}}/Airplanes
@@ -84,3 +104,7 @@ Content-Type: application/json
 		},
 	"introductionToTheFleet": "11/7/2019 8:36:07 PM",
 }
+
+### BROWSE AIRPLANES ###
+GET {{airplanesServiceUrl}}/Airplanes?page=1&pageSize=100
+Content-Type: application/json

@@ -29,6 +29,10 @@ namespace BeComfy.Api.Controllers
         public async Task<IActionResult> Delete(DeleteFlight command)
             => await SendAsync<DeleteFlight>(new DeleteFlight(command.Id));
 
+        [HttpPost]
+        public async Task<IActionResult> End(EndFlight command)
+            => await SendAsync<EndFlight>(new EndFlight(command.Id));
+
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
             => Ok(await _flightsService.GetAsync(id));
