@@ -34,6 +34,7 @@ namespace BeComfy.Api
             
             // Hardcoded addresses for now
             services.RegisterRestClientFor<IFlightsService>("http://localhost:5005");
+            services.RegisterRestClientFor<IAirplanesService>("http://localhost:5015");
 
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())

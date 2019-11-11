@@ -2,8 +2,8 @@
 @flightServiceUrl = http://localhost:5005
 @identityServiceUrl = http://localhost:5010
 @airplanesServiceUrl = http://localhost:5015
-@flightId = F935D326-71FA-484A-A155-B8EA8A277DA4
-@airplaneId = b46d99e8-840f-4108-87ec-1b272ef0767e
+@flightId = 1191c0cd-26c0-45c7-9113-0b05be49adb7
+@airplaneId = 2B8F4BEB-3B37-4145-A69B-0F7AEA9D2EBE
 @jwtToken = 
 
 #########################################################
@@ -81,7 +81,7 @@ Content-Type: application/json
 
 ### END FLIGHT ###
 
-POST {{apiUrl}}/Flights
+PATCH {{apiUrl}}/Flights
 Content-Type: application/json
 
 {

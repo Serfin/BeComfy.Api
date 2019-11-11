@@ -5,7 +5,7 @@ using BeComfy.Common.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using BeComfy.Api.Services;
 using System;
-using BeComfy.Api.Queries;
+using BeComfy.Api.Queries.Flights;
 
 namespace BeComfy.Api.Controllers
 {
@@ -29,7 +29,7 @@ namespace BeComfy.Api.Controllers
         public async Task<IActionResult> Delete(DeleteFlight command)
             => await SendAsync<DeleteFlight>(new DeleteFlight(command.Id));
 
-        [HttpPost]
+        [HttpPatch]
         public async Task<IActionResult> End(EndFlight command)
             => await SendAsync<EndFlight>(new EndFlight(command.Id));
 

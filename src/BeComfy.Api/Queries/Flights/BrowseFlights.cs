@@ -1,4 +1,4 @@
-namespace BeComfy.Api.Queries
+namespace BeComfy.Api.Queries.Flights
 {
     public class BrowseFlights
     {

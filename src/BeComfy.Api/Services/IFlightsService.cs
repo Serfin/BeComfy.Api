@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BeComfy.Api.Models.Flights;
-using BeComfy.Api.Queries;
+using BeComfy.Api.Queries.Flights;
 using RestEase;
 
 namespace BeComfy.Api.Services
