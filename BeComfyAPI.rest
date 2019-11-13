@@ -2,8 +2,8 @@
 @flightServiceUrl = http://localhost:5005
 @identityServiceUrl = http://localhost:5010
 @airplanesServiceUrl = http://localhost:5015
-@flightId = 1191c0cd-26c0-45c7-9113-0b05be49adb7
-@airplaneId = 2B8F4BEB-3B37-4145-A69B-0F7AEA9D2EBE
+@flightId = 35da4d83-e2ac-4882-9a8a-504cefdf2d06
+@airplaneId = 76D6E7AE-43D5-4375-B56F-7B5F8F4B215A
 @jwtToken = 
 
 #########################################################
@@ -51,7 +51,7 @@ GET {{flightServiceUrl}}/flights/{{flightId}}
 Content-Type: application/json
 
 ### BROWSE FLIGHTS ###
-GET {{apiUrl}}/flights?page=1&pageSize=3
+GET {{apiUrl}}/flights?page=1&pageSize=15
 Content-Type: application/json
 
 ### CREATE FLIGHT ###
@@ -67,26 +67,18 @@ Content-Type: application/json
 	"endAirport": "d99d11aa-fbc9-418b-b355-c4e416223f47",
 	"flightType": "RoundTrip",
 	"flightDate": "9/21/2019 8:36:07 PM",
-	"returnDate": "11/21/2019 12:00:00 PM"
+	"returnDate": "9/30/2019 12:00:00 PM"
 }
 
 ### DELETE FLIGHT ###
 
-DELETE {{apiUrl}}/Flights
+DELETE {{apiUrl}}/Flights/{{flightId}}
 Content-Type: application/json
-
-{
-	"id": "{{flightId}}"
-}
 
 ### END FLIGHT ###
 
-PATCH {{apiUrl}}/Flights
+PATCH {{apiUrl}}/Flights/{{flightId}}
 Content-Type: application/json
-
-{
-	"id": "{{flightId}}",
-}
 
 #########################################################
 ################### AIRPLANES SERVICE ###################
