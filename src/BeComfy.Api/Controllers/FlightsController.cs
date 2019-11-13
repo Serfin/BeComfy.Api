@@ -25,13 +25,13 @@ namespace BeComfy.Api.Controllers
             => await SendAsync<CreateFlight>(command.BindId(cmd => cmd.Id),
                 resourceId: command.Id, resource: "flights");
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete(DeleteFlight command)
-            => await SendAsync<DeleteFlight>(new DeleteFlight(command.Id));
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+            => await SendAsync<DeleteFlight>(new DeleteFlight(id));
 
-        [HttpPatch]
-        public async Task<IActionResult> End(EndFlight command)
-            => await SendAsync<EndFlight>(new EndFlight(command.Id));
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> End(Guid id)
+            => await SendAsync<EndFlight>(new EndFlight(id));
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
