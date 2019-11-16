@@ -9,7 +9,6 @@ using BeComfy.Api.Queries.Flights;
 
 namespace BeComfy.Api.Controllers
 {
-    [ApiController]
     [Route("[controller]")]
     public class FlightsController : BaseController
     {

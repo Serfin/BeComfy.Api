@@ -9,9 +9,9 @@ using BeComfy.Common.RabbitMq;
 using BeComfy.Common.RestEase;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace BeComfy.Api
 {
@@ -28,8 +28,11 @@ namespace BeComfy.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            // Instead of AddMvc/Core()
+            services.AddControllers()
+                .AddNewtonsoftJson();
+
             services.AddJwt();
-            services.AddControllers();
             services.AddAuthorization(x => x.AddPolicy("admin", p => p.RequireRole("admin")));
             
             // Hardcoded addresses for now
@@ -49,13 +52,22 @@ namespace BeComfy.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
+        public void Configure(IApplicationBuilder app, IHostEnvironment env)
+        { 
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            // UseRouting() has the highest priority
             app.UseRouting();
+
+            // UseAuthentication() must be used between
+            // Routing and Endpoins
             app.UseAuthentication();
 
-            app.UseEndpoints(endpoints =>
-            {
+            // Instead of UseMvc();
+            app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
             });
         }

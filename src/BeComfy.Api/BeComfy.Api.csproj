@@ -8,4 +8,8 @@
     <ProjectReference Include="..\..\..\BeComfy.Common\src\BeComfy.Common\BeComfy.Common.csproj" />
   </ItemGroup>
 
+  <!-- Must target netcore3.0 -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
+  </ItemGroup>
 </Project>

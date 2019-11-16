@@ -20,11 +20,6 @@ namespace BeComfy.Api.Messages.Commands.Flights
         public DateTime FlightDate { get; }
         public DateTime? ReturnDate { get; }
 
-        public CreateFlight()
-        {
-            
-        }
-
         [JsonConstructor]
         public CreateFlight(Guid id, Guid planeId, Guid startAirport, IEnumerable<Guid> transferAirports, Guid endAirport, 
             FlightType flightType, decimal price, DateTime flightDate, DateTime? returnDate)
