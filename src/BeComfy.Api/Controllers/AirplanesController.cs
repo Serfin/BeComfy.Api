@@ -17,6 +17,7 @@ namespace BeComfy.Api.Controllers
         public AirplanesController(IAirplanesService airplanesService, IBusPublisher busPublisher)
             : base(busPublisher)
         {
+            _airplanesService = airplanesService;
         }
 
         [HttpPost]

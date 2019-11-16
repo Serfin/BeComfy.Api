@@ -2,7 +2,7 @@
 @flightServiceUrl = http://localhost:5005
 @identityServiceUrl = http://localhost:5010
 @airplanesServiceUrl = http://localhost:5015
-@flightId = 35da4d83-e2ac-4882-9a8a-504cefdf2d06
+@flightId = 4a54c1c6-f12b-43f2-9676-ad99bb02ece0
 @airplaneId = 76D6E7AE-43D5-4375-B56F-7B5F8F4B215A
 @jwtToken = 
 
