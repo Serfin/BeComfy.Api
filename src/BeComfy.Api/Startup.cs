@@ -5,10 +5,10 @@ using Autofac.Extensions.DependencyInjection;
 using BeComfy.Api.Services;
 using BeComfy.Common.Authentication;
 using BeComfy.Common.CqrsFlow;
+using BeComfy.Common.Jaeger;
 using BeComfy.Common.RabbitMq;
 using BeComfy.Common.RestEase;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -22,7 +22,7 @@ namespace BeComfy.Api
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; } 
         public IContainer Container { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -32,6 +32,8 @@ namespace BeComfy.Api
             services.AddControllers()
                 .AddNewtonsoftJson();
 
+            services.AddJaeger();
+            services.AddOpenTracing();
             services.AddJwt();
             services.AddAuthorization(x => x.AddPolicy("admin", p => p.RequireRole("admin")));
             
@@ -63,7 +65,7 @@ namespace BeComfy.Api
             app.UseRouting();
 
             // UseAuthentication() must be used between
-            // Routing and Endpoins
+            // Routing and Endpoints
             app.UseAuthentication();
 
             // Instead of UseMvc();
