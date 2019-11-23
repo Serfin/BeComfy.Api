@@ -7,6 +7,7 @@ using RestEase;
 
 namespace BeComfy.Api.Services
 {
+    [SerializationMethods(Query = QuerySerializationMethod.Serialized)]
     public interface IAirplanesService
     {
         [AllowAnyStatusCode]
