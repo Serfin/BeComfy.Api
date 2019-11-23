@@ -2,8 +2,8 @@
 @flightServiceUrl = http://localhost:5005
 @identityServiceUrl = http://localhost:5010
 @airplanesServiceUrl = http://localhost:5015
-@flightId = 623c3e72-4684-4576-b088-a67b528118cf
-@airplaneId = e2100dc7-bc92-4336-88db-f535fbc5c57a
+@flightId = 845fc0b7-6020-4574-8c23-6d4da9535782
+@airplaneId = 6a47f92f-dd71-45ac-b4f7-4873c0df5d3b
 @jwtToken = 
 
 #########################################################
@@ -98,5 +98,9 @@ Content-Type: application/json
 }
 
 ### BROWSE AIRPLANES ###
-GET {{airplanesServiceUrl}}/Airplanes?page=1&pageSize=100
+GET {{apiUrl}}/Airplanes?page=1&pageSize=100
+Content-Type: application/json
+
+### GET AIRPLANE ###
+GET {{apiUrl}}/Airplanes/{{airplaneId}}
 Content-Type: application/json
