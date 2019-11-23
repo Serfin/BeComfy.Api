@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using BeComfy.Common.CqrsFlow;
 using BeComfy.Common.RabbitMq;
 using Microsoft.AspNetCore.Mvc;
+using OpenTracing;
 
 namespace BeComfy.Api.Controllers
 {
@@ -14,10 +15,12 @@ namespace BeComfy.Api.Controllers
         private static readonly string AcceptLanguageHeader = "accept-language";
         private static readonly string DefaultCulture = "en-us";
         private readonly IBusPublisher _busPublisher;
+        private readonly ITracer _tracer;
 
-        public BaseController(IBusPublisher busPublisher)
+        public BaseController(IBusPublisher busPublisher, ITracer tracer)
         {
             _busPublisher = busPublisher;
+            _tracer = tracer;
         }
 
         protected async Task<IActionResult> SendAsync<T>(T command, 
@@ -37,7 +40,7 @@ namespace BeComfy.Api.Controllers
             }
 
             return CorrelationContext.Create<T>(Guid.NewGuid(), UserId, resourceId ?? Guid.Empty, 
-               HttpContext.TraceIdentifier, HttpContext.Connection.Id, 
+               HttpContext.TraceIdentifier, HttpContext.Connection.Id, _tracer.ActiveSpan.Context.ToString(),
                 Request.Path.ToString(), Culture, resource);
         }
 

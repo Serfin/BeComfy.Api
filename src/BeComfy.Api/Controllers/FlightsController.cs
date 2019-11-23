@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using BeComfy.Api.Services;
 using System;
 using BeComfy.Api.Queries.Flights;
+using OpenTracing;
 
 namespace BeComfy.Api.Controllers
 {
@@ -14,8 +15,9 @@ namespace BeComfy.Api.Controllers
     {
         private readonly IFlightsService _flightsService;
 
-        public FlightsController(IBusPublisher busPublisher, IFlightsService flightsService)
-            : base(busPublisher)
+        public FlightsController(IBusPublisher busPublisher, IFlightsService flightsService,
+                ITracer tracer)
+            : base(busPublisher, tracer)
         {
             _flightsService = flightsService;
         }

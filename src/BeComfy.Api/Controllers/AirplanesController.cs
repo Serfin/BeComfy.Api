@@ -6,6 +6,7 @@ using BeComfy.Common.Mvc;
 using BeComfy.Api.Services;
 using System;
 using BeComfy.Api.Queries.Airplanes;
+using OpenTracing;
 
 namespace BeComfy.Api.Controllers
 {
@@ -14,8 +15,9 @@ namespace BeComfy.Api.Controllers
     {
         private readonly IAirplanesService _airplanesService;
 
-        public AirplanesController(IAirplanesService airplanesService, IBusPublisher busPublisher)
-            : base(busPublisher)
+        public AirplanesController(IAirplanesService airplanesService, IBusPublisher busPublisher, 
+                ITracer tracer)
+            : base(busPublisher, tracer)
         {
             _airplanesService = airplanesService;
         }
