@@ -2,8 +2,9 @@
 @flightServiceUrl = http://localhost:5005
 @identityServiceUrl = http://localhost:5010
 @airplanesServiceUrl = http://localhost:5015
-@flightId = 845fc0b7-6020-4574-8c23-6d4da9535782
-@airplaneId = 6a47f92f-dd71-45ac-b4f7-4873c0df5d3b
+@ticketsServiceUrl = http://localhost:5020
+@flightId = 57f201e3-dc41-4ad5-b9b2-8856bfaaf88f
+@airplaneId = 32613d34-f100-4483-989f-b0399fdae431
 @jwtToken = 
 
 #########################################################
@@ -16,6 +17,8 @@ GET {{flightServiceUrl}}/api/Home
 GET {{identityServiceUrl}}/Home
 ###
 GET {{airplanesServiceUrl}}/api/Home
+###
+GET {{ticketsServiceUrl}}/api/Home
 
 #########################################################
 ################## IDENTITY SERVICE #####################
@@ -60,6 +63,10 @@ Content-Type: application/json
 
 {
 	"planeId": "{{airplaneId}}",
+	"availableSeats": {
+		"economic": 150,
+		"business": 50
+	},
 	"startAirport": "5ba47457-437e-4efc-b724-a49b3d1aac89",
 	"transferAirports": [
 		"81053718-af52-4f50-9a53-0e4a51525c3a"
@@ -89,7 +96,7 @@ POST {{apiUrl}}/Airplanes
 Content-Type: application/json
 
 {
-	"model": "Boeing 757",
+	"model": "Boeing 5",
 	"availableSeats": {
 			"economic": 150,
 			"business": 50
@@ -98,9 +105,26 @@ Content-Type: application/json
 }
 
 ### BROWSE AIRPLANES ###
-GET {{apiUrl}}/Airplanes?page=1&pageSize=100
+GET {{apiUrl}}/Airplanes?page=1&pageSize=100&status=Ready
 Content-Type: application/json
 
 ### GET AIRPLANE ###
 GET {{apiUrl}}/Airplanes/{{airplaneId}}
 Content-Type: application/json
+
+
+#########################################################
+################### TICKETS SERVICE #####################
+#########################################################
+
+### BUY TICKET ###
+POST {{apiUrl}}/Tickets
+Content-Type: application/json
+
+{
+	"flightId": "d99d11aa-fbc9-418b-b355-c4e416223f47",
+	"customerId": "d99d11aa-fbc9-418b-b355-c4e416223f47",
+	"seats": {
+		"economic": 1
+	},
+}

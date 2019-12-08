@@ -11,8 +11,8 @@ namespace BeComfy.Api.Models.Flights
         public Guid StartAirport { get; set; }
         public IEnumerable<Guid> TransferAirports { get; set; }
         public Guid EndAirport { get; set; }
+        public FlightStatus FlightStatus { get; set; }
         public FlightType FlightType { get; set; }
-        public decimal Price { get; set; }
         public DateTime FlightDate { get; set; }
         public DateTime? ReturnDate { get; set; }
     }
