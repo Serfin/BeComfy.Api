@@ -3,22 +3,22 @@
 @identityServiceUrl = http://localhost:5010
 @airplanesServiceUrl = http://localhost:5015
 @ticketsServiceUrl = http://localhost:5020
-@flightId = 57f201e3-dc41-4ad5-b9b2-8856bfaaf88f
-@airplaneId = 32613d34-f100-4483-989f-b0399fdae431
-@jwtToken = 
+@flightId = 37BB34E3-B9D9-410E-B0F9-40F235E88A67
+@airplaneId = 32613D34-F100-4483-989F-B0399FDAE431
+@jwtToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNDRmY2QyZDA2ZWQ0NDA4YjVjOWQzNTJhYTJkMTRiZSIsInVuaXF1ZV9uYW1lIjoiMDQ0ZmNkMmQwNmVkNDQwOGI1YzlkMzUyYWEyZDE0YmUiLCJqdGkiOiI3YjNhZjk5Yy1kZjM0LTQwOGYtOTYzZi1hMGJmNzY0YmY5MzkiLCJpYXQiOiIxNTc2NDI3NzMzOTE3IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVVNFUiIsIm5iZiI6MTU3NjQyNzczMywiZXhwIjoxNTc2NDI5NTMzLCJpc3MiOiJiZWNvbWZ5LWlkZW50aXR5LXNlcnZpY2UifQ.Gl4jAe6fZr3bnTP1V-TLyf6piUVVzBKcwVgcm6HT80s
 
 #########################################################
-############## API GATEWAY HEALTHCHECK ##################
+################ SERVICES HEALTHCHECK ###################
 #########################################################
-GET {{apiUrl}}/api/Home
+GET {{apiUrl}}/Home
 ###
-GET {{flightServiceUrl}}/api/Home
+GET {{flightServiceUrl}}/Home
 ###
 GET {{identityServiceUrl}}/Home
 ###
-GET {{airplanesServiceUrl}}/api/Home
+GET {{airplanesServiceUrl}}/Home
 ###
-GET {{ticketsServiceUrl}}/api/Home
+GET {{ticketsServiceUrl}}/Home
 
 #########################################################
 ################## IDENTITY SERVICE #####################
@@ -33,7 +33,8 @@ Content-Type: application/json
 
 {
 	"email": "test1@test.com",
-	"password": "123qwe"
+	"password": "123qwe",
+	//"role": "admin"
 }
 
 ### SIGN IN ###
@@ -64,11 +65,13 @@ Content-Type: application/json
 {
 	"planeId": "{{airplaneId}}",
 	"availableSeats": {
-		"economic": 150,
+		"economic": 100,
 		"business": 50
 	},
 	"startAirport": "5ba47457-437e-4efc-b724-a49b3d1aac89",
 	"transferAirports": [
+		"81053718-af52-4f50-9a53-0e4a51525c3a",
+		"81053718-af52-4f50-9a53-0e4a51525c3a",
 		"81053718-af52-4f50-9a53-0e4a51525c3a"
 	],
 	"endAirport": "d99d11aa-fbc9-418b-b355-c4e416223f47",
@@ -122,9 +125,10 @@ POST {{apiUrl}}/Tickets
 Content-Type: application/json
 
 {
-	"flightId": "d99d11aa-fbc9-418b-b355-c4e416223f47",
+	"flightId": "{{flightId}}",
 	"customerId": "d99d11aa-fbc9-418b-b355-c4e416223f47",
 	"seats": {
-		"economic": 1
+		"economic": 1,
+		"business": 5
 	},
 }

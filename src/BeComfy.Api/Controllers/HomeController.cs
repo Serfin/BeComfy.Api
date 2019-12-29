@@ -2,11 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BeComfy.Api.Controllers
 {
-    [Route("api/home")]
+    [Route("[controller]")]
     public class HomeController : ControllerBase
     {
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Get()
             => Ok("BeComfy API Gateway");
     }
 }

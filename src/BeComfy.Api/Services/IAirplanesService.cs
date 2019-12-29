@@ -12,7 +12,7 @@ namespace BeComfy.Api.Services
     {
         [AllowAnyStatusCode]
         [Get("airplanes/{id}")]
-        Task<Airplane> Get([Path] Guid id);
+        Task<Airplane> GetAsync([Path] Guid id);
 
         [AllowAnyStatusCode]
         [Get("airplanes")]

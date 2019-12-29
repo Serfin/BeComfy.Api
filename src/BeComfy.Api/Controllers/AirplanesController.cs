@@ -29,7 +29,7 @@ namespace BeComfy.Api.Controllers
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
-            => Ok(await _airplanesService.Get(id));
+            => Ok(await _airplanesService.GetAsync(id));
 
         [HttpGet]
         public async Task<IActionResult> Browse([FromQuery] BrowseAirplanes query)
