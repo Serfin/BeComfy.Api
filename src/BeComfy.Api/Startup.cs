@@ -66,6 +66,7 @@ namespace BeComfy.Api
 
             // UseAuthentication() must be used between
             // Routing and Endpoints
+            app.UseAuthorization();
             app.UseAuthentication();
 
             // Instead of UseMvc();

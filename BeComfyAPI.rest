@@ -3,9 +3,9 @@
 @identityServiceUrl = http://localhost:5010
 @airplanesServiceUrl = http://localhost:5015
 @ticketsServiceUrl = http://localhost:5020
-@flightId = 37BB34E3-B9D9-410E-B0F9-40F235E88A67
+@flightId = 37bb34e3-b9d9-410e-b0f9-40f235e88a67
 @airplaneId = 32613D34-F100-4483-989F-B0399FDAE431
-@jwtToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNDRmY2QyZDA2ZWQ0NDA4YjVjOWQzNTJhYTJkMTRiZSIsInVuaXF1ZV9uYW1lIjoiMDQ0ZmNkMmQwNmVkNDQwOGI1YzlkMzUyYWEyZDE0YmUiLCJqdGkiOiI3YjNhZjk5Yy1kZjM0LTQwOGYtOTYzZi1hMGJmNzY0YmY5MzkiLCJpYXQiOiIxNTc2NDI3NzMzOTE3IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVVNFUiIsIm5iZiI6MTU3NjQyNzczMywiZXhwIjoxNTc2NDI5NTMzLCJpc3MiOiJiZWNvbWZ5LWlkZW50aXR5LXNlcnZpY2UifQ.Gl4jAe6fZr3bnTP1V-TLyf6piUVVzBKcwVgcm6HT80s
+@jwtToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNDRmY2QyZDA2ZWQ0NDA4YjVjOWQzNTJhYTJkMTRiZSIsInVuaXF1ZV9uYW1lIjoiMDQ0ZmNkMmQwNmVkNDQwOGI1YzlkMzUyYWEyZDE0YmUiLCJqdGkiOiI4ODNhOGMxYi01ZWE3LTQ2N2UtYTM4Mi00ZTY0YmFlMDk5YzQiLCJpYXQiOiIxNTc4MjQxNTg5MDUwIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVVNFUiIsIm5iZiI6MTU3ODI0MTU4OSwiZXhwIjoxNTc4MjQzMzg5LCJpc3MiOiJiZWNvbWZ5LWlkZW50aXR5LXNlcnZpY2UifQ.sLNxmfZdfstgZIAqDASCpyLblA7ynivb5QTfmrKC3Fw
 
 #########################################################
 ################ SERVICES HEALTHCHECK ###################
@@ -123,12 +123,12 @@ Content-Type: application/json
 ### BUY TICKET ###
 POST {{apiUrl}}/Tickets
 Content-Type: application/json
+Authorization: Bearer {{jwtToken}}
 
 {
 	"flightId": "{{flightId}}",
-	"customerId": "d99d11aa-fbc9-418b-b355-c4e416223f47",
 	"seats": {
-		"economic": 1,
+		"economic": 2,
 		"business": 5
 	},
 }

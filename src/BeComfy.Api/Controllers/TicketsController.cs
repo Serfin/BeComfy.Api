@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using BeComfy.Api.Messages.Commands.Flights;
 using BeComfy.Api.Messages.Commands.Tickets;
+using BeComfy.Common.Authentication;
 using BeComfy.Common.Mvc;
 using BeComfy.Common.RabbitMq;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +9,7 @@ using OpenTracing;
 
 namespace BeComfy.Api.Controllers
 {
+    [JwtAuthentication]
     [Route("[controller]")]
     public class TicketsController : BaseController
     {
@@ -20,6 +22,5 @@ namespace BeComfy.Api.Controllers
         public async Task<IActionResult> Post(BuyTicket command)
             => await SendAsync<BuyTicket>(command.BindId(cmd => cmd.Id),
                 resourceId: command.Id, resource: "tickets");
-
     }
 }
