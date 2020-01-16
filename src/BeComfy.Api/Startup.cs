@@ -8,6 +8,7 @@ using BeComfy.Common.CqrsFlow;
 using BeComfy.Common.Jaeger;
 using BeComfy.Common.RabbitMq;
 using BeComfy.Common.RestEase;
+using BeComfy.Common.Serilog;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -64,6 +65,7 @@ namespace BeComfy.Api
             // UseRouting() has the highest priority
             app.UseRouting();
 
+            app.UseSerilog();
             // UseAuthentication() must be used between
             // Routing and Endpoints
             app.UseAuthorization();
