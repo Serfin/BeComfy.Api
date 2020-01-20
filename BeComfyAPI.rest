@@ -3,10 +3,10 @@
 @identityServiceUrl = http://localhost:5010
 @airplanesServiceUrl = http://localhost:5015
 @ticketsServiceUrl = http://localhost:5020
+@customersServiceUtl = http://localhost:5025
 @flightId = 37bb34e3-b9d9-410e-b0f9-40f235e88a67
-@airplaneId = 32613D34-F100-4483-989F-B0399FDAE431
-@jwtToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNDRmY2QyZDA2ZWQ0NDA4YjVjOWQzNTJhYTJkMTRiZSIsInVuaXF1ZV9uYW1lIjoiMDQ0ZmNkMmQwNmVkNDQwOGI1YzlkMzUyYWEyZDE0YmUiLCJqdGkiOiI4ODNhOGMxYi01ZWE3LTQ2N2UtYTM4Mi00ZTY0YmFlMDk5YzQiLCJpYXQiOiIxNTc4MjQxNTg5MDUwIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVVNFUiIsIm5iZiI6MTU3ODI0MTU4OSwiZXhwIjoxNTc4MjQzMzg5LCJpc3MiOiJiZWNvbWZ5LWlkZW50aXR5LXNlcnZpY2UifQ.sLNxmfZdfstgZIAqDASCpyLblA7ynivb5QTfmrKC3Fw
-
+@airplaneId = def30fb9-9772-4175-abc3-df84f6b8c48b
+@jwtToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMDBlNzk0MTQ4ZTU0MzI0OWU2MTgyZDg1ZDIwOGE5ZSIsInVuaXF1ZV9uYW1lIjoiZTAwZTc5NDE0OGU1NDMyNDllNjE4MmQ4NWQyMDhhOWUiLCJqdGkiOiJmYTI0ODk5ZC1iY2I5LTQ5MWEtYWU5NC1lYjYyNDQzYzU2NDciLCJpYXQiOiIxNTc5MjEzMjExMjY3IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU4iLCJuYmYiOjE1NzkyMTMyMTEsImV4cCI6MTU3OTIxNTAxMSwiaXNzIjoiYmVjb21meS1pZGVudGl0eS1zZXJ2aWNlIn0.QjlIfCK4qohKkKDZIkWFxU5hW9h9EEHLVy9DJa_ud2M
 #########################################################
 ################ SERVICES HEALTHCHECK ###################
 #########################################################
@@ -19,6 +19,8 @@ GET {{identityServiceUrl}}/Home
 GET {{airplanesServiceUrl}}/Home
 ###
 GET {{ticketsServiceUrl}}/Home
+###
+GET {{customersServiceUtl}}/Home
 
 #########################################################
 ################## IDENTITY SERVICE #####################
@@ -32,9 +34,9 @@ POST {{identityServiceUrl}}/sign-up
 Content-Type: application/json
 
 {
-	"email": "test1@test.com",
+	"email": "test1admin@test.com",
 	"password": "123qwe",
-	//"role": "admin"
+	"role": "admin"
 }
 
 ### SIGN IN ###
@@ -42,7 +44,7 @@ POST {{identityServiceUrl}}/sign-in
 Content-Type: application/json
 
 {
-	"email": "test1@test.com",
+	"email": "test1admin@test.com",
 	"password": "123qwe"
 }
 
@@ -131,4 +133,23 @@ Authorization: Bearer {{jwtToken}}
 		"economic": 2,
 		"business": 5
 	},
+}
+
+
+
+#########################################################
+################## CUSTOMERS SERVICE ####################
+#########################################################
+
+### CREATE CUSTOMER ###
+
+POST {{apiUrl}}/Customers
+Content-Type: application/json
+
+{
+	"FirstName": "Tom",
+	"SecondName": "Testo",
+	"Surname": "",
+	"Age": 21,
+	"Address": "Test address",
 }
