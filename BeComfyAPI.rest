@@ -13,10 +13,10 @@
 ####################  VARIABLES  ########################
 #########################################################
 
-@flightId = 37bb34e3-b9d9-410e-b0f9-40f235e88a67
-@airplaneId = def30fb9-9772-4175-abc3-df84f6b8c48b
+@flightId = 9b63f2c4-35d9-4c71-9004-365abebfa324
+@airplaneId = 1688efab-4e5d-4ada-8763-00821d1bf35c
 @customerId = e00e794148e543249e6182d85d208a9e
-@jwtToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMDBlNzk0MTQ4ZTU0MzI0OWU2MTgyZDg1ZDIwOGE5ZSIsInVuaXF1ZV9uYW1lIjoiZTAwZTc5NDE0OGU1NDMyNDllNjE4MmQ4NWQyMDhhOWUiLCJqdGkiOiIxNjZkNWUwNC1kNDk4LTRiYjEtODM3MS05ODViZGMzOGVhY2MiLCJpYXQiOiIxNTgwMjQ4NDMwMDE3IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU4iLCJuYmYiOjE1ODAyNDg0MzAsImV4cCI6MTU4MDI1MDIzMCwiaXNzIjoiYmVjb21meS1pZGVudGl0eS1zZXJ2aWNlIn0.IzZ0mhhdSWT6_R_iQjnw8NnGyooW1I9vIfbTg9SXoy0
+@jwtToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMDBlNzk0MTQ4ZTU0MzI0OWU2MTgyZDg1ZDIwOGE5ZSIsInVuaXF1ZV9uYW1lIjoiZTAwZTc5NDE0OGU1NDMyNDllNjE4MmQ4NWQyMDhhOWUiLCJqdGkiOiI1NGY3MDQzOS05ZjU5LTQ4MDAtOWU1Mi0zNzZjOTBmNmMxMDAiLCJpYXQiOiIxNTgwMjUzNTc4NDU4IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU4iLCJuYmYiOjE1ODAyNTM1NzgsImV4cCI6MTU4MDI1NTM3OCwiaXNzIjoiYmVjb21meS1pZGVudGl0eS1zZXJ2aWNlIn0.-vFi5thGVlpdfdtU4iNowQ34mksNzBxMzSpKBY4fsGU
 
 #########################################################
 ################ SERVICES HEALTHCHECK ###################
@@ -141,8 +141,8 @@ Authorization: Bearer {{jwtToken}}
 {
 	"flightId": "{{flightId}}",
 	"seats": {
-		"economic": 2,
-		"business": 5
+		"economic": 1,
+		"business": 1
 	},
 }
 
@@ -164,6 +164,16 @@ Authorization: Bearer {{jwtToken}}
 	"Surname": "",
 	"Age": 21,
 	"Address": "Test address",
+}
+
+### INCREASE CUSTOMER BALANCE ###
+
+PATCH {{apiUrl}}/Customers
+Content-Type: application/json
+Authorization: Bearer {{jwtToken}}
+
+{
+	"AmountToAdd": 1000,
 }
 
 ### GET CUSTOMER ###
