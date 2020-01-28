@@ -1,12 +1,23 @@
+#########################################################
+#####################  SERVICES  ########################
+#########################################################
+
 @apiUrl = http://localhost:5000
 @flightServiceUrl = http://localhost:5005
 @identityServiceUrl = http://localhost:5010
 @airplanesServiceUrl = http://localhost:5015
 @ticketsServiceUrl = http://localhost:5020
 @customersServiceUtl = http://localhost:5025
+
+#########################################################
+####################  VARIABLES  ########################
+#########################################################
+
 @flightId = 37bb34e3-b9d9-410e-b0f9-40f235e88a67
 @airplaneId = def30fb9-9772-4175-abc3-df84f6b8c48b
-@jwtToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMDBlNzk0MTQ4ZTU0MzI0OWU2MTgyZDg1ZDIwOGE5ZSIsInVuaXF1ZV9uYW1lIjoiZTAwZTc5NDE0OGU1NDMyNDllNjE4MmQ4NWQyMDhhOWUiLCJqdGkiOiJmYTI0ODk5ZC1iY2I5LTQ5MWEtYWU5NC1lYjYyNDQzYzU2NDciLCJpYXQiOiIxNTc5MjEzMjExMjY3IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU4iLCJuYmYiOjE1NzkyMTMyMTEsImV4cCI6MTU3OTIxNTAxMSwiaXNzIjoiYmVjb21meS1pZGVudGl0eS1zZXJ2aWNlIn0.QjlIfCK4qohKkKDZIkWFxU5hW9h9EEHLVy9DJa_ud2M
+@customerId = e00e794148e543249e6182d85d208a9e
+@jwtToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMDBlNzk0MTQ4ZTU0MzI0OWU2MTgyZDg1ZDIwOGE5ZSIsInVuaXF1ZV9uYW1lIjoiZTAwZTc5NDE0OGU1NDMyNDllNjE4MmQ4NWQyMDhhOWUiLCJqdGkiOiIxNjZkNWUwNC1kNDk4LTRiYjEtODM3MS05ODViZGMzOGVhY2MiLCJpYXQiOiIxNTgwMjQ4NDMwMDE3IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU4iLCJuYmYiOjE1ODAyNDg0MzAsImV4cCI6MTU4MDI1MDIzMCwiaXNzIjoiYmVjb21meS1pZGVudGl0eS1zZXJ2aWNlIn0.IzZ0mhhdSWT6_R_iQjnw8NnGyooW1I9vIfbTg9SXoy0
+
 #########################################################
 ################ SERVICES HEALTHCHECK ###################
 #########################################################
@@ -145,11 +156,18 @@ Authorization: Bearer {{jwtToken}}
 
 POST {{apiUrl}}/Customers
 Content-Type: application/json
+Authorization: Bearer {{jwtToken}}
 
 {
-	"FirstName": "Tom",
+	"FirstName": "TestAdmin",
 	"SecondName": "Testo",
 	"Surname": "",
 	"Age": 21,
 	"Address": "Test address",
 }
+
+### GET CUSTOMER ###
+
+GET {{apiUrl}}/Customers/{{customerId}}
+Content-Type: application/json
+Authorization: Bearer {{jwtToken}}

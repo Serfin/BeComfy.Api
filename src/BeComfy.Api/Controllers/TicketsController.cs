@@ -20,7 +20,8 @@ namespace BeComfy.Api.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Post(BuyTicket command)
-            => await SendAsync<BuyTicket>(command.BindId(cmd => cmd.Id),
-                resourceId: command.Id, resource: "tickets");
+            => await SendAsync<BuyTicket>(command.BindId(cmd => cmd.Id)
+                .BindUserIdentity(cmd => cmd.CustomerId, User?.Identity?.Name),
+                    resourceId: command.Id, resource: "tickets");
     }
 }
