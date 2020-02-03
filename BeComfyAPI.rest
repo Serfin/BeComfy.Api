@@ -13,14 +13,15 @@
 ####################  VARIABLES  ########################
 #########################################################
 
-@flightId = 9b63f2c4-35d9-4c71-9004-365abebfa324
-@airplaneId = 1688efab-4e5d-4ada-8763-00821d1bf35c
+@flightId = b3a81209-1f96-4445-83ea-018f19f01c4f
+@airplaneId = fc018a72-7fce-4d81-a8f6-05d82f346e50
 @customerId = e00e794148e543249e6182d85d208a9e
-@jwtToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMDBlNzk0MTQ4ZTU0MzI0OWU2MTgyZDg1ZDIwOGE5ZSIsInVuaXF1ZV9uYW1lIjoiZTAwZTc5NDE0OGU1NDMyNDllNjE4MmQ4NWQyMDhhOWUiLCJqdGkiOiI1NGY3MDQzOS05ZjU5LTQ4MDAtOWU1Mi0zNzZjOTBmNmMxMDAiLCJpYXQiOiIxNTgwMjUzNTc4NDU4IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU4iLCJuYmYiOjE1ODAyNTM1NzgsImV4cCI6MTU4MDI1NTM3OCwiaXNzIjoiYmVjb21meS1pZGVudGl0eS1zZXJ2aWNlIn0.-vFi5thGVlpdfdtU4iNowQ34mksNzBxMzSpKBY4fsGU
+@jwtToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMDBlNzk0MTQ4ZTU0MzI0OWU2MTgyZDg1ZDIwOGE5ZSIsInVuaXF1ZV9uYW1lIjoiZTAwZTc5NDE0OGU1NDMyNDllNjE4MmQ4NWQyMDhhOWUiLCJqdGkiOiJjMDhmZGExMS1hM2Q1LTQ1ZTAtOGY5NC03NDY1MTY1YTRkMjIiLCJpYXQiOiIxNTgwNTE2NDc1NjQxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU4iLCJuYmYiOjE1ODA1MTY0NzUsImV4cCI6MTU4MDUxODI3NSwiaXNzIjoiYmVjb21meS1pZGVudGl0eS1zZXJ2aWNlIn0.b2g9oVViqk90DP0AY9LV5oxd5dCpCrh1HVtmNO9jAIM
 
 #########################################################
 ################ SERVICES HEALTHCHECK ###################
 #########################################################
+
 GET {{apiUrl}}/Home
 ###
 GET {{flightServiceUrl}}/Home
@@ -94,12 +95,10 @@ Content-Type: application/json
 }
 
 ### DELETE FLIGHT ###
-
 DELETE {{apiUrl}}/Flights/{{flightId}}
 Content-Type: application/json
 
 ### END FLIGHT ###
-
 PATCH {{apiUrl}}/Flights/{{flightId}}
 Content-Type: application/json
 
@@ -112,7 +111,7 @@ POST {{apiUrl}}/Airplanes
 Content-Type: application/json
 
 {
-	"model": "Boeing 5",
+	"model": "Boeing 3",
 	"availableSeats": {
 			"economic": 150,
 			"business": 50
@@ -128,7 +127,6 @@ Content-Type: application/json
 GET {{apiUrl}}/Airplanes/{{airplaneId}}
 Content-Type: application/json
 
-
 #########################################################
 ################### TICKETS SERVICE #####################
 #########################################################
@@ -141,19 +139,16 @@ Authorization: Bearer {{jwtToken}}
 {
 	"flightId": "{{flightId}}",
 	"seats": {
-		"economic": 1,
+		"economic": 18,
 		"business": 1
 	},
 }
-
-
 
 #########################################################
 ################## CUSTOMERS SERVICE ####################
 #########################################################
 
 ### CREATE CUSTOMER ###
-
 POST {{apiUrl}}/Customers
 Content-Type: application/json
 Authorization: Bearer {{jwtToken}}
@@ -162,12 +157,11 @@ Authorization: Bearer {{jwtToken}}
 	"FirstName": "TestAdmin",
 	"SecondName": "Testo",
 	"Surname": "",
-	"Age": 21,
+	"Age": -1,
 	"Address": "Test address",
 }
 
 ### INCREASE CUSTOMER BALANCE ###
-
 PATCH {{apiUrl}}/Customers
 Content-Type: application/json
 Authorization: Bearer {{jwtToken}}
@@ -177,7 +171,6 @@ Authorization: Bearer {{jwtToken}}
 }
 
 ### GET CUSTOMER ###
-
 GET {{apiUrl}}/Customers/{{customerId}}
 Content-Type: application/json
 Authorization: Bearer {{jwtToken}}
