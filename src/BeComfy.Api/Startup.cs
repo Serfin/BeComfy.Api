@@ -39,9 +39,9 @@ namespace BeComfy.Api
             services.AddAuthorization(x => x.AddPolicy("admin", p => p.RequireRole("admin")));
             
             // Hardcoded addresses for now
-            services.RegisterRestClientFor<IFlightsService>("http://localhost:5005");
-            services.RegisterRestClientFor<IAirplanesService>("http://localhost:5015");
-            services.RegisterRestClientFor<ICustomersService>("http://localhost:5025");
+            services.RegisterRestClientFor<IFlightsService>("becomfy-services-flights");
+            services.RegisterRestClientFor<IAirplanesService>("becomfy-services-airplanes");
+            services.RegisterRestClientFor<ICustomersService>("becomfy-services-customers");
 
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
