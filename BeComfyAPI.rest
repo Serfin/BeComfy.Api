@@ -10,6 +10,12 @@
 @customersServiceUtl = http://localhost:5025
 
 #########################################################
+################### INFRASTRUCTURE ######################
+#########################################################
+
+@consulUrl = http://localhost:8500
+
+#########################################################
 ####################  VARIABLES  ########################
 #########################################################
 
@@ -174,3 +180,16 @@ Authorization: Bearer {{jwtToken}}
 GET {{apiUrl}}/Customers/{{customerId}}
 Content-Type: application/json
 Authorization: Bearer {{jwtToken}}
+
+#########################################################
+################### CONSUL REGISTERY ####################
+#########################################################
+
+### GET REGISTERED SERVICES ###
+GET http://localhost:8500/v1/agent/services
+
+### GET SPECIFIC SERVICE
+GET http://localhost:8500/v1/agent/service/c514c52
+
+### DEREGISTER SPECIFIC SERVICE ###
+PUT http/agent/service/deregister/:service_id
