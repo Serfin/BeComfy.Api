@@ -185,11 +185,13 @@ Authorization: Bearer {{jwtToken}}
 ################### CONSUL REGISTERY ####################
 #########################################################
 
+@consulServiceId = e36558d
+
 ### GET REGISTERED SERVICES ###
-GET http://localhost:8500/v1/agent/services
+GET {{consulUrl}}/v1/agent/services
 
 ### GET SPECIFIC SERVICE
-GET http://localhost:8500/v1/agent/service/c514c52
+GET {{consulUrl}}/v1/agent/service/{{consulServiceId}}
 
 ### DEREGISTER SPECIFIC SERVICE ###
-PUT http/agent/service/deregister/:service_id
+PUT {{consulUrl}}/v1/agent/service/deregister/{{consulServiceId}}
