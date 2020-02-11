@@ -19,10 +19,10 @@
 ####################  VARIABLES  ########################
 #########################################################
 
-@flightId = b3a81209-1f96-4445-83ea-018f19f01c4f
-@airplaneId = fc018a72-7fce-4d81-a8f6-05d82f346e50
-@customerId = e00e794148e543249e6182d85d208a9e
-@jwtToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMDBlNzk0MTQ4ZTU0MzI0OWU2MTgyZDg1ZDIwOGE5ZSIsInVuaXF1ZV9uYW1lIjoiZTAwZTc5NDE0OGU1NDMyNDllNjE4MmQ4NWQyMDhhOWUiLCJqdGkiOiJjMDhmZGExMS1hM2Q1LTQ1ZTAtOGY5NC03NDY1MTY1YTRkMjIiLCJpYXQiOiIxNTgwNTE2NDc1NjQxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU4iLCJuYmYiOjE1ODA1MTY0NzUsImV4cCI6MTU4MDUxODI3NSwiaXNzIjoiYmVjb21meS1pZGVudGl0eS1zZXJ2aWNlIn0.b2g9oVViqk90DP0AY9LV5oxd5dCpCrh1HVtmNO9jAIM
+@flightId = 6176a985-d793-475e-bc8e-12b57694602f
+@airplaneId = d13ce007-44f4-4dfc-9f27-89071bc6627a
+@customerId = 6e0acbf4-6afe-4052-ba56-7ee0b577d9a0
+@jwtToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ZTBhY2JmNDZhZmU0MDUyYmE1NjdlZTBiNTc3ZDlhMCIsInVuaXF1ZV9uYW1lIjoiNmUwYWNiZjQ2YWZlNDA1MmJhNTY3ZWUwYjU3N2Q5YTAiLCJqdGkiOiI3ODgwYzMzMS0zYzU5LTQ3NjUtODQzYy05YzI1ZGFjNDBlYzAiLCJpYXQiOiIxNTgxNDYwMTU0MDc5IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU4iLCJuYmYiOjE1ODE0NjAxNTQsImV4cCI6MTU4MTQ2NTU1NCwiaXNzIjoiYmVjb21meS1pZGVudGl0eS1zZXJ2aWNlIn0.XEWecCozOd8iEA-NpUruCVOFIVIUqX7hrIGPMTZqkCQ
 
 #########################################################
 ################ SERVICES HEALTHCHECK ###################
@@ -52,7 +52,7 @@ POST {{identityServiceUrl}}/sign-up
 Content-Type: application/json
 
 {
-	"email": "test1admin@test.com",
+	"email": "test2admin@test.com",
 	"password": "123qwe",
 	"role": "admin"
 }
@@ -62,9 +62,65 @@ POST {{identityServiceUrl}}/sign-in
 Content-Type: application/json
 
 {
-	"email": "test1admin@test.com",
+	"email": "test2admin@test.com",
 	"password": "123qwe"
 }
+
+#########################################################
+################## CUSTOMERS SERVICE ####################
+#########################################################
+
+### CREATE CUSTOMER ###
+POST {{apiUrl}}/Customers
+Content-Type: application/json
+Authorization: Bearer {{jwtToken}}
+
+{
+	"FirstName": "TestAdmin",
+	"SecondName": "Testo",
+	"Surname": "",
+	"Age": 25,
+	"Address": "Test address",
+}
+
+### INCREASE CUSTOMER BALANCE ###
+PATCH {{apiUrl}}/Customers
+Content-Type: application/json
+Authorization: Bearer {{jwtToken}}
+
+{
+	"AmountToAdd": 1000,
+}
+
+### GET CUSTOMER ###
+GET {{apiUrl}}/Customers/{{customerId}}
+Content-Type: application/json
+Authorization: Bearer {{jwtToken}}
+
+#########################################################
+################### AIRPLANES SERVICE ###################
+#########################################################
+
+### CREATE AIRPLANE ###
+POST {{apiUrl}}/Airplanes
+Content-Type: application/json
+
+{
+	"model": "Boeing 3",
+	"availableSeats": {
+			"economic": 150,
+			"business": 50
+		},
+	"introductionToTheFleet": "11/7/2019 8:36:07 PM",
+}
+
+### BROWSE AIRPLANES ###
+GET {{apiUrl}}/Airplanes?page=1&pageSize=100&status=Ready
+Content-Type: application/json
+
+### GET AIRPLANE ###
+GET {{apiUrl}}/Airplanes/{{airplaneId}}
+Content-Type: application/json
 
 #########################################################
 ################### FLIGHTS SERVICE #####################
@@ -109,31 +165,6 @@ PATCH {{apiUrl}}/Flights/{{flightId}}
 Content-Type: application/json
 
 #########################################################
-################### AIRPLANES SERVICE ###################
-#########################################################
-
-### CREATE AIRPLANE ###
-POST {{apiUrl}}/Airplanes
-Content-Type: application/json
-
-{
-	"model": "Boeing 3",
-	"availableSeats": {
-			"economic": 150,
-			"business": 50
-		},
-	"introductionToTheFleet": "11/7/2019 8:36:07 PM",
-}
-
-### BROWSE AIRPLANES ###
-GET {{apiUrl}}/Airplanes?page=1&pageSize=100&status=Ready
-Content-Type: application/json
-
-### GET AIRPLANE ###
-GET {{apiUrl}}/Airplanes/{{airplaneId}}
-Content-Type: application/json
-
-#########################################################
 ################### TICKETS SERVICE #####################
 #########################################################
 
@@ -149,37 +180,6 @@ Authorization: Bearer {{jwtToken}}
 		"business": 1
 	},
 }
-
-#########################################################
-################## CUSTOMERS SERVICE ####################
-#########################################################
-
-### CREATE CUSTOMER ###
-POST {{apiUrl}}/Customers
-Content-Type: application/json
-Authorization: Bearer {{jwtToken}}
-
-{
-	"FirstName": "TestAdmin",
-	"SecondName": "Testo",
-	"Surname": "",
-	"Age": -1,
-	"Address": "Test address",
-}
-
-### INCREASE CUSTOMER BALANCE ###
-PATCH {{apiUrl}}/Customers
-Content-Type: application/json
-Authorization: Bearer {{jwtToken}}
-
-{
-	"AmountToAdd": 1000,
-}
-
-### GET CUSTOMER ###
-GET {{apiUrl}}/Customers/{{customerId}}
-Content-Type: application/json
-Authorization: Bearer {{jwtToken}}
 
 #########################################################
 ################### CONSUL REGISTERY ####################
