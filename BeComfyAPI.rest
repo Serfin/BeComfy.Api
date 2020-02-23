@@ -106,16 +106,16 @@ POST {{apiUrl}}/Airplanes
 Content-Type: application/json
 
 {
-	"airplaneRegistrationNumber": "PL-001",
+	"airplaneRegistrationNumber": "PL-000",
 	"model": "Boeing 3",
 	"availableSeats": {
-			"economic": 150,
-			"business": 50
-		},
-	"introductionToTheFleet": "11/7/2019 8:36:07 PM",
+			"economic": 10,
+			"business": 10
+		}
 }
 
 ### BROWSE AIRPLANES ###
+### Statuses: None, OutOfOrder, Reserved, Ready
 GET {{apiUrl}}/Airplanes?page=1&pageSize=100&status=Ready
 Content-Type: application/json
 
