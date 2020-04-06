@@ -22,7 +22,7 @@
 #########################################################
 @airplaneId = 992060a9-2312-4e0e-8e0a-885f3fbd0ae8
 @customerId = 45ee6bdd-e724-4a3e-8c6e-17da84d5afa8
-@jwtToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0NWVlNmJkZGU3MjQ0YTNlOGM2ZTE3ZGE4NGQ1YWZhOCIsInVuaXF1ZV9uYW1lIjoiNDVlZTZiZGRlNzI0NGEzZThjNmUxN2RhODRkNWFmYTgiLCJqdGkiOiJjMzcxODM1OC1mN2UzLTQ1MDAtYmVmYi03MTdiYjIxNmQzNDQiLCJpYXQiOiIxNTgzNzkzMzc3Mjk0IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU4iLCJuYmYiOjE1ODM3OTMzNzcsImV4cCI6MTU4Mzc5ODc3NywiaXNzIjoiYmVjb21meS1pZGVudGl0eS1zZXJ2aWNlIn0.IsZtSSenxX9-fFetGfnUPFgZmVM3mTvuFxV7nxttkqk
+@jwtToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0NWVlNmJkZGU3MjQ0YTNlOGM2ZTE3ZGE4NGQ1YWZhOCIsInVuaXF1ZV9uYW1lIjoiNDVlZTZiZGRlNzI0NGEzZThjNmUxN2RhODRkNWFmYTgiLCJqdGkiOiJiNGU5Y2Q1MC1mMmIyLTRmZDQtYTk0OC0wMWEwZDAxYTlmNzciLCJpYXQiOiIxNTg2MjA2MzI1ODA1IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU4iLCJuYmYiOjE1ODYyMDYzMjUsImV4cCI6MTU4NjIxMTcyNSwiaXNzIjoiYmVjb21meS1pZGVudGl0eS1zZXJ2aWNlIn0.spCNG_DYbRzE84EM1iMwN33FJ-s-NqhHR2j5znvIZNM
 
 #########################################################
 ################ SERVICES HEALTHCHECK ###################
@@ -132,7 +132,7 @@ Content-Type: application/json
 ################### FLIGHTS SERVICE #####################
 #########################################################
 
-@flightId = e978a2e9-f006-406e-a656-60a32d4f319e
+@flightId = cce9be06-4280-4fce-ac1b-0be0efe58372
 
 ### GET FLIGHT ###
 GET {{apiUrl}}/flights/{{flightId}}
@@ -186,6 +186,10 @@ Authorization: Bearer {{jwtToken}}
 		"business": 1
 	},
 }
+
+### GET TICKETS FOR CUSTOMER ###
+GET {{apiUrl}}/Tickets?page=1&pagesize=30&customerId=45ee6bdd-e724-4a3e-8c6e-17da84d5afa8
+Content-Type: application/json
 
 #########################################################
 ################## EMPLOYEES SERVICE ####################

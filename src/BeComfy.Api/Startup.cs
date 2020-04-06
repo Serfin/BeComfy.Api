@@ -38,10 +38,10 @@ namespace BeComfy.Api
             services.AddJwt();
             services.AddAuthorization(x => x.AddPolicy("admin", p => p.RequireRole("admin")));
             
-            // Hardcoded addresses for now
             services.RegisterRestClientFor<IFlightsService>("becomfy-services-flights");
             services.RegisterRestClientFor<IAirplanesService>("becomfy-services-airplanes");
             services.RegisterRestClientFor<ICustomersService>("becomfy-services-customers");
+            services.RegisterRestClientFor<ITicketsService>("becomfy-services-tickets");
 
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
