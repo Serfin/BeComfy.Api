@@ -17,8 +17,9 @@ namespace BeComfy.Api.Controllers
     {
         private readonly ICustomersService _customersService;
 
-        public CustomersController(IBusPublisher busPublisher, ITracer tracer,
-            ICustomersService customersService) : base(busPublisher, tracer)
+        public CustomersController(IBusPublisher busPublisher, ITracer tracer, 
+            ICustomersService customersService) 
+            : base(busPublisher, tracer)
         {
             _customersService = customersService;
         }

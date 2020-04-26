@@ -1,5 +1,9 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using System;
+using Serilog;
+using System.Reflection;
+using BeComfy.Logging.Elk;
 
 namespace BeComfy.Api
 {
@@ -11,7 +15,8 @@ namespace BeComfy.Api
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+            WebHost.CreateDefaultBuilder(args) 
+                .UseStartup<Startup>()
+                .UseComfyLogger();
     }
 }
