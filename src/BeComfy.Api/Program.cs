@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore;
+﻿using BeComfy.Logging;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using System;
-using Serilog;
-using System.Reflection;
-using BeComfy.Logging.Elk;
 
 namespace BeComfy.Api
 {
