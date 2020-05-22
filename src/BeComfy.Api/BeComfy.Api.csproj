@@ -1,16 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
-    <ItemGroup>
-    <ProjectReference Include="..\..\..\BeComfy.Common.Libraries\src\BeComfy.Common\BeComfy.Common.csproj" />
-    <ProjectReference Include="..\..\..\BeComfy.Common.Libraries\src\BeComfy.Logging\BeComfy.Logging.csproj" />
-  </ItemGroup>
 
   <!-- Must target netcore3.0 -->
   <ItemGroup>
+    <PackageReference Include="BeComfy.Common" Version="0.0.1" />
+    <PackageReference Include="BeComfy.Logging" Version="0.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
     <PackageReference Include="OpenTracing.Contrib.NetCore" Version="0.6.2" />
   </ItemGroup>
