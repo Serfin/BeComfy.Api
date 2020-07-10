@@ -10,19 +10,21 @@ namespace BeComfy.Api.Messages.Commands.Airplanes
     [MessageNamespace("airplanes")]
     public class CreateAirplane : ICommand
     {
-        public Guid Id { get; }
+        public Guid AirplaneId { get; }
         public string AirplaneRegistrationNumber { get; }
-        public string Model { get; }
-        public IDictionary<SeatClass, int> AvailableSeats { get; }
+        public string AirplaneModel { get; }
+        public IDictionary<SeatClass, int> AvailableSeats { get; }  
+        public IDictionary<EmployeePosition, int> RequiredCrew { get; }
 
         [JsonConstructor]
-        public CreateAirplane(Guid id, string airplaneRegistrationNumber, string model, IDictionary<SeatClass, int> availableSeats,
-            DateTime introductionToTheFleet)
+        public CreateAirplane(Guid airplaneId, string airplaneRegistrationNumber, string airplaneModel, 
+            IDictionary<SeatClass, int> availableSeats, IDictionary<EmployeePosition, int> requiredCrew)
         {   
-            Id = id;
+            AirplaneId = airplaneId;
             AirplaneRegistrationNumber = airplaneRegistrationNumber;
-            Model = model;
+            AirplaneModel = airplaneModel;
             AvailableSeats = availableSeats;
+            RequiredCrew = requiredCrew;
         }
     }
 }

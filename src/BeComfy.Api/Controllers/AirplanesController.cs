@@ -24,8 +24,8 @@ namespace BeComfy.Api.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Post(CreateAirplane command)
-            => await SendAsync<CreateAirplane>(command.BindId(cmd => cmd.Id),
-                resourceId: command.Id, resource: "airplanes");
+            => await SendAsync<CreateAirplane>(command.BindId(cmd => cmd.AirplaneId),
+                resourceId: command.AirplaneId, resource: "airplanes");
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
