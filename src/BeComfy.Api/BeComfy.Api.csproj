@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\BeComfy.Common.Libraries\src\BeComfy.Swagger\BeComfy.Swagger.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="BeComfy.Common" Version="0.0.1" />
     <PackageReference Include="BeComfy.Logging" Version="0.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
