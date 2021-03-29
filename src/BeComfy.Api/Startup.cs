@@ -62,15 +62,10 @@ namespace BeComfy.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            // UseRouting() has the highest priority
             app.UseRouting();
-
-            // UseAuthentication() must be used between
-            // Routing and Endpoints
             app.UseAuthorization();
             app.UseAuthentication();
 
-            // Instead of UseMvc();
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
             });

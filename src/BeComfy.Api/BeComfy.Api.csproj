@@ -5,7 +5,10 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
-  <!-- Must target netcore3.0 -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BeComfy.Common.Libraries\src\BeComfy.Swagger\BeComfy.Swagger.csproj" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="BeComfy.Common" Version="0.0.1" />
     <PackageReference Include="BeComfy.Logging" Version="0.0.1" />
